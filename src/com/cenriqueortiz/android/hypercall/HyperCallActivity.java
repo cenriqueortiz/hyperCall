@@ -1,13 +1,6 @@
 /*
  * Based on Copyright (C) 2010 The Android Open Source Project
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 
 package com.cenriqueortiz.android.hypercall;
@@ -28,9 +21,7 @@ import android.net.sip.*;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
 import java.text.ParseException;
-
 import com.cenriqueortiz.hypercall.R;
 
 /**
@@ -39,7 +30,6 @@ import com.cenriqueortiz.hypercall.R;
 public class HyperCallActivity extends Activity implements View.OnTouchListener {
 
     public String sipAddress = null;
-
     public SipManager manager = null;
     public SipProfile me = null;
     public SipAudioCall call = null;
@@ -49,7 +39,6 @@ public class HyperCallActivity extends Activity implements View.OnTouchListener 
     private static final int SET_AUTH_INFO = 2;
     private static final int UPDATE_SETTINGS_DIALOG = 3;
     private static final int HANG_UP = 4;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +60,6 @@ public class HyperCallActivity extends Activity implements View.OnTouchListener 
         // "Push to talk" can be a serious pain when the screen keeps turning off.
         // Let's prevent that.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
         initializeManager();
     }
 
@@ -101,7 +89,6 @@ public class HyperCallActivity extends Activity implements View.OnTouchListener 
         if(manager == null) {
           manager = SipManager.newInstance(this);
         }
-
         initializeLocalProfile();
     }
 
@@ -145,7 +132,6 @@ public class HyperCallActivity extends Activity implements View.OnTouchListener 
 
             // This listener must be added AFTER manager.open is called,
             // Otherwise the methods aren't guaranteed to fire.
-
             manager.setRegistrationListener(me.getUriString(), new SipRegistrationListener() {
                     public void onRegistering(String localProfileUri) {
                         updateStatus("Registering with SIP Server...");
@@ -235,7 +221,7 @@ public class HyperCallActivity extends Activity implements View.OnTouchListener 
      * @param status The String to display in the status box.
      */
     public void updateStatus(final String status) {
-        // Be a good citizen.  Make sure UI changes fire on the UI thread.
+        //Make sure UI changes fire on the UI thread.
         this.runOnUiThread(new Runnable() {
             public void run() {
                 TextView labelView = (TextView) findViewById(R.id.sipLabel);
