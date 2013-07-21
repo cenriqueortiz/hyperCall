@@ -44,7 +44,7 @@ public class HyperCallActivity extends Activity implements View.OnTouchListener 
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.walkietalkie);
+        setContentView(R.layout.talk_screen);
 
         ToggleButton pushToTalkButton = (ToggleButton) findViewById(R.id.pushToTalk);
         pushToTalkButton.setOnTouchListener(this);
